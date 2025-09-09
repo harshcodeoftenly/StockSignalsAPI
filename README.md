@@ -57,3 +57,19 @@
 ```bash
 git clone https://github.com/harshcodeoftenly/StockSignalsAPI.git
 cd StockSignalsAPI
+
+2. Build the project:
+
+mvn clean install
+
+
+3. Run the API
+
+mvn spring-boot:run
+
+
+4. Test endpoints
+
+Open in Postman or browser:
+
+http://localhost:8080
