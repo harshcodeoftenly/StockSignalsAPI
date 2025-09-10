@@ -118,12 +118,15 @@ http://localhost:8080
 
 ## 📂 Project Structure
 
+
+```bash
 src/main/java/com/stockapp/
-├── controller/ # REST controllers (PriceController, FundamentalController, IndicatorController)
-├── service/ # Business logic & Yahoo Finance API calls (YahooFinanceService, IndicatorService)
-├── model/ # Stock data and OHLCV entities (Price, OHLCV, Fundamental models)
-├── indicators/ # Indicator calculators (SMA, EMA, RSI, MACD)
-└── StockAppApplication.java # Spring Boot application entry point
+├── controller/       # REST controllers (PriceController, FundamentalController, IndicatorController)
+├── service/          # Business logic & Yahoo Finance API calls (YahooFinanceService, IndicatorService)
+├── model/            # Stock data and OHLCV entities (Price, OHLCV, Fundamental models)
+├── indicators/       # Indicator calculators (SMA, EMA, RSI, MACD)
+└── StockAppApplication.java  # Spring Boot application entry point
+```
 
 
 ## 🚀 Usage Examples
