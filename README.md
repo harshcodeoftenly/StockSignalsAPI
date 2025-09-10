@@ -1,6 +1,6 @@
-# 🚀 StockSignalsAPI
+# 🚀 StockDetailsAPI
 
-**StockSignalsAPI** is a Spring Boot REST API for fetching **live stock data**, historical OHLCV prices, company fundamentals, and calculating popular trading indicators like SMA, EMA, RSI, and MACD. This API helps developers, traders, and analysts access stock info programmatically and make decisions based on technical indicators.
+**StockDetailsAPI** is a Spring Boot REST API for fetching **live stock data**, historical OHLCV prices, company fundamentals, and calculating popular trading indicators like SMA, EMA, RSI, and MACD. This API helps developers, traders, and analysts access stock info programmatically and make decisions based on technical indicators.
 
 ---
 
@@ -102,12 +102,12 @@ http://localhost:8080
 
 ### 📈 Indicator APIs  
 
-Supported indicators: `sma20`, `sma50`, `ema20`, `ema50`, `rsi14`, `macd`
+Supported indicators: `sma`, `sma`, `ema`, `ema`, `rsi`, `macd`
 
 | Endpoint (path)                                | Description                  | Example URL                                                          |
 |------------------------------------------------|------------------------------|----------------------------------------------------------------------|
-| `/api/indicators/{symbol}/{indicator}`         | Latest indicator value       | `http://localhost:8080/api/indicators/INFY.NS/sma20`                 |
-| `/api/indicators/{symbol}/{indicator}/series`  | Full historical series       | `http://localhost:8080/api/indicators/INFY.NS/sma20/series`          |
+| `/api/indicators/{symbol}/{indicator}`         | Latest indicator value       | `http://localhost:8080/api/indicators/INFY.NS/sma`                 |
+| `/api/indicators/{symbol}/{indicator}/series`  | Full historical series       | `http://localhost:8080/api/indicators/INFY.NS/sma/series`          |
 
 ---
 
@@ -149,11 +149,11 @@ curl "http://localhost:8080/api/price/INFY.NS/range?range=6mo"
 ```
 ### Get SMA(20) latest value
 ```bash
-curl http://localhost:8080/api/indicators/INFY.NS/sma20
+curl http://localhost:8080/api/indicators/INFY.NS/sma
 ```
 ### Get SMA(20) historical series
 ```bash
-curl http://localhost:8080/api/indicators/INFY.NS/sma20/series
+curl http://localhost:8080/api/indicators/INFY.NS/sma/series
 ```
 ### Get company fundamentals
 ```bash
