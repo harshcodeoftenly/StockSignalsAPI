@@ -89,7 +89,6 @@ http://localhost:8080
 | `/api/price/{symbol}/today`          | Today’s high/low             | `http://localhost:8080/api/price/INFY.NS/today`                            |
 | `/api/price/{symbol}/range?range={}` | Custom OHLCV data (1mo–1y)   | `http://localhost:8080/api/price/INFY.NS/range?range=6mo`                  |
 
-> Example external source: [Yahoo Finance Chart API](https://query1.finance.yahoo.com/v8/finance/chart/INFY.NS?range=1y&interval=1d)
 
 ---
 
@@ -115,4 +114,46 @@ Supported indicators: `sma20`, `sma50`, `ema20`, `ema50`, `rsi14`, `macd`
 ### 🔬 Test Endpoints
 
 Open directly in Postman or browser:
+http://localhost:8080
 
+## 📂 Project Structure
+
+src/main/java/com/stockapp/
+├── controller/ # REST controllers (PriceController, FundamentalController, IndicatorController)
+├── service/ # Business logic & Yahoo Finance API calls (YahooFinanceService, IndicatorService)
+├── model/ # Stock data and OHLCV entities (Price, OHLCV, Fundamental models)
+├── indicators/ # Indicator calculators (SMA, EMA, RSI, MACD)
+└── StockAppApplication.java # Spring Boot application entry point
+
+
+## 🚀 Usage Examples
+
+### Get live price
+```bash
+curl http://localhost:8080/api/price/INFY.NS/live
+```
+### Get 52-week range
+```bash
+curl http://localhost:8080/api/price/INFY.NS/52week
+```
+### Get today's high/low
+```bash
+curl http://localhost:8080/api/price/INFY.NS/today
+```
+### Get custom OHLCV data (6 months)
+```bash
+curl "http://localhost:8080/api/price/INFY.NS/range?range=6mo"
+```
+### Get SMA(20) latest value
+```bash
+curl http://localhost:8080/api/indicators/INFY.NS/sma20
+```
+### Get SMA(20) historical series
+```bash
+curl http://localhost:8080/api/indicators/INFY.NS/sma20/series
+```
+### Get company fundamentals
+```bash
+curl http://localhost:8080/api/fundamentals/INFY.NS
+```
+---
