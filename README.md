@@ -57,6 +57,7 @@
 ```bash
 git clone https://github.com/harshvardhansingh7/StockDetailsAPI.git
 cd StockDetailsAPI
+```
 
 2. Build the project:
 
