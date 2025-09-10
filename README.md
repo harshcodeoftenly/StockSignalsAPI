@@ -72,35 +72,47 @@ mvn spring-boot:run
 ```
 
 
-### API Documentation
-Base URL (Local)
-text
-http://localhost:8080
-Price APIs
-Endpoint (path)	Description	Example URL
-/api/price/{symbol}/live	Get latest price	http://localhost:8080/api/price/INFY.NS/live
-/api/price/{symbol}/52week	52-week high/low	http://localhost:8080/api/price/INFY.NS/52week
-/api/price/{symbol}/today	Today’s high/low	http://localhost:8080/api/price/INFY.NS/today
-/api/price/{symbol}/range?range={range}	Custom OHLCV data
-(range: 1mo, 3mo, 6mo, 1y)	http://localhost:8080/api/price/INFY.NS/range?range=6mo
-Example external source used: Yahoo Finance chart API
-Example:
-https://query1.finance.yahoo.com/v8/finance/chart/INFY.NS?range=1y&interval=1d
+## API Documentation
 
-Fundamentals APIs
-Endpoint (path)	Description	Example URL
-/api/fundamentals/{symbol}	Market Cap, PE ratio, Debt, EPS, etc.	http://localhost:8080/api/fundamentals/INFY.NS
-Indicator APIs
-Supported indicators: sma20, sma50, ema20, ema50, rsi14, macd
-
-Endpoint (path)	Description	Example URL
-/api/indicators/{symbol}/{indicator}	Latest indicator value	http://localhost:8080/api/indicators/INFY.NS/sma20
-/api/indicators/{symbol}/{indicator}/series	Full historical series	http://localhost:8080/api/indicators/INFY.NS/sma20/series
-
-
-
-4. Test endpoints
-
-Open in Postman or browser:
+### Base URL (Local)
 
 http://localhost:8080
+
+---
+
+### 📊 Price APIs
+
+| Endpoint (path)                      | Description                  | Example URL                                                                 |
+|--------------------------------------|------------------------------|----------------------------------------------------------------------------|
+| `/api/price/{symbol}/live`           | Get latest price             | `http://localhost:8080/api/price/INFY.NS/live`                             |
+| `/api/price/{symbol}/52week`         | 52-week high/low             | `http://localhost:8080/api/price/INFY.NS/52week`                           |
+| `/api/price/{symbol}/today`          | Today’s high/low             | `http://localhost:8080/api/price/INFY.NS/today`                            |
+| `/api/price/{symbol}/range?range={}` | Custom OHLCV data (1mo–1y)   | `http://localhost:8080/api/price/INFY.NS/range?range=6mo`                  |
+
+> Example external source: [Yahoo Finance Chart API](https://query1.finance.yahoo.com/v8/finance/chart/INFY.NS?range=1y&interval=1d)
+
+---
+
+### 🏦 Fundamentals APIs
+
+| Endpoint (path)              | Description                            | Example URL                                             |
+|-------------------------------|----------------------------------------|---------------------------------------------------------|
+| `/api/fundamentals/{symbol}` | Market Cap, PE ratio, Debt, EPS, etc.  | `http://localhost:8080/api/fundamentals/INFY.NS`        |
+
+---
+
+### 📈 Indicator APIs  
+
+Supported indicators: `sma20`, `sma50`, `ema20`, `ema50`, `rsi14`, `macd`
+
+| Endpoint (path)                                | Description                  | Example URL                                                          |
+|------------------------------------------------|------------------------------|----------------------------------------------------------------------|
+| `/api/indicators/{symbol}/{indicator}`         | Latest indicator value       | `http://localhost:8080/api/indicators/INFY.NS/sma20`                 |
+| `/api/indicators/{symbol}/{indicator}/series`  | Full historical series       | `http://localhost:8080/api/indicators/INFY.NS/sma20/series`          |
+
+---
+
+### 🔬 Test Endpoints
+
+Open directly in Postman or browser:
+
