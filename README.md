@@ -63,10 +63,13 @@ cd StockDetailsAPI
 
 ```bash
 mvn clean install
+```
 
+```bash
 3. Run the API
 
 mvn spring-boot:run
+```
 
 
 ### API Documentation
