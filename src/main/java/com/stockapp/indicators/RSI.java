@@ -1,11 +1,11 @@
 package com.stockapp.indicators;
 
+import com.stockapp.dto.RSIResponse;
 import com.stockapp.model.OHLCV;
 import com.stockapp.model.StockData;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Component
 public class RSI implements IndicatorCalculator {
@@ -14,13 +14,20 @@ public class RSI implements IndicatorCalculator {
 
     @Override
     public Object calculate(StockData stockData, Map<String, String> params) {
+        List<RSIResponse> series = calculateSeries(stockData, params);
+        return series.isEmpty() ? new RSIResponse(stockData.getSymbol(), 0.0)
+                : series.get(series.size() - 1);
+    }
+
+    @Override
+    public List<RSIResponse> calculateSeries(StockData stockData, Map<String, String> params) {
         int period = parseIntParam(params.get("period"), 14);
         List<OHLCV> data = stockData.getOhlcv();
-        if (data == null || data.size() <= period) return 0.0;
+        List<RSIResponse> rsis = new ArrayList<>();
 
-        double gain = 0.0;
-        double loss = 0.0;
+        if (data == null || data.size() <= period) return rsis;
 
+        double gain = 0.0, loss = 0.0;
         for (int i = 1; i <= period; i++) {
             double change = data.get(i).getClose() - data.get(i - 1).getClose();
             if (change > 0) gain += change; else loss += Math.abs(change);
@@ -34,13 +41,16 @@ public class RSI implements IndicatorCalculator {
             double l = Math.max(0, -change);
             avgGain = ((avgGain * (period - 1)) + g) / period;
             avgLoss = ((avgLoss * (period - 1)) + l) / period;
+
+            double rsi = avgLoss == 0 ? 100.0 : 100 - (100 / (1 + (avgGain / avgLoss)));
+            String date = data.get(i).getTimestamp().toString();
+            rsis.add(new RSIResponse(date, rsi));
         }
 
-        if (avgLoss == 0) return 100.0;
-        double rs = avgGain / avgLoss;
-        double rsi = 100 - (100 / (1 + rs));
-        return rsi;
+        return rsis;
     }
 
-    private int parseIntParam(String v, int def) { try { return v == null ? def : Integer.parseInt(v); } catch (Exception e) { return def; } }
+    private int parseIntParam(String v, int def) {
+        try { return v == null ? def : Integer.parseInt(v); } catch (Exception e) { return def; }
+    }
 }
