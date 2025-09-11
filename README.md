@@ -125,6 +125,7 @@ src/main/java/com/stockapp/
 ├── service/          # Business logic & Yahoo Finance API calls (YahooFinanceService, IndicatorService)
 ├── model/            # Stock data and OHLCV entities (Price, OHLCV, Fundamental models)
 ├── indicators/       # Indicator calculators (SMA, EMA, RSI, MACD)
+├── dto/              # Data Transfer Objects for indicators (SMAResponse, EMAResponse, RSIResponse, MACDResponse)
 └── StockAppApplication.java  # Spring Boot application entry point
 ```
 
